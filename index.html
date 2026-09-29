@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>التزام</title>
+<meta name="theme-color" content="#0A0A0A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="التزام">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;700;800;900&family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&display=swap">
+<style>
+:root{--o:#FF5A00;--ink:#0A0A0A;--txt:#F4F2EE;--mut:#8C8A86;--rule:#262626}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--ink);color:var(--txt);font-family:'Alexandria',system-ui,sans-serif}
+body{overscroll-behavior:none;-webkit-user-select:none;user-select:none}
+#wrap{max-width:520px;margin:0 auto;height:100%;display:flex;flex-direction:column}
+#main{flex:1;overflow-y:auto;padding-top:env(safe-area-inset-top);padding-bottom:24px;scrollbar-width:none}
+#main::-webkit-scrollbar{display:none}
+button{all:unset;cursor:pointer;box-sizing:border-box}
+button:focus-visible{outline:2px solid var(--o);outline-offset:2px}
+.num{font-family:Archivo,Alexandria,sans-serif;font-style:italic;font-weight:900;font-stretch:75%;direction:ltr;unicode-bidi:isolate}
+.lbl{font-size:12px;font-weight:800;color:var(--mut)}
+.rule{border-bottom:2px solid var(--rule)}
+.row{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:2px solid var(--rule)}
+.sq{width:44px;height:44px;flex:none;border:2px solid #333;display:flex;align-items:center;justify-content:center}
+.sq:active{background:var(--o);color:var(--ink);border-color:var(--o)}
+.hero{padding:20px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.big{font-size:128px;line-height:.78;color:var(--o);letter-spacing:-.02em}
+.h1{font-size:40px;font-weight:900;line-height:1}
+.sub{font-size:14px;font-weight:500;color:var(--mut);text-wrap:pretty}
+.sec{padding:22px 20px 10px}
+.bar{height:12px;background:repeating-linear-gradient(-45deg,#1C1C1C 0 6px,#0A0A0A 6px 12px);display:flex}
+.bar>i{display:block;transition:width .3s}
+.btn{display:flex;align-items:center;gap:10px;padding:0 14px;min-height:48px;border:2px solid #333;font-size:14px;font-weight:800}
+.btn:active{background:#1C1C1C}
+.btn.p{background:var(--o);border-color:var(--o);color:var(--ink)}
+.btn.p:active{background:#E04E00}
+input{-webkit-user-select:text;user-select:text;border-radius:0}
+input:focus{outline:none;border-color:var(--o)!important}
+#toast{position:fixed;left:16px;right:16px;max-width:488px;margin:0 auto;bottom:calc(86px + env(safe-area-inset-bottom));background:var(--o);color:var(--ink);font-size:14px;font-weight:800;padding:12px 16px;pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;z-index:10}
+nav{display:grid;grid-template-columns:repeat(6,1fr);border-top:2px solid var(--rule);background:var(--ink);padding-bottom:max(env(safe-area-inset-bottom),6px)}
+nav button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0 6px;margin-top:-2px;border-top:3px solid transparent;color:var(--mut);font-size:10.5px;font-weight:800}
+nav button.on{color:var(--o);border-top-color:var(--o)}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="main"></div>
+  <nav>
+    <button data-a="tab" data-v="today"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="square"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg>اليوم</button>
+    <button data-a="tab" data-v="month"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="square"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4"/><path d="M3 10h18"/></svg>التقرير</button>
+    <button data-a="tab" data-v="water"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>الماء</button>
+    <button data-a="tab" data-v="cal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>السعرات</button>
+    <button data-a="tab" data-v="sleep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>النوم</button>
+    <button data-a="tab" data-v="friends"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="square"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>الأصدقاء</button>
+  </nav>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
